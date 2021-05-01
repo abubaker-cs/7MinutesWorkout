@@ -17,16 +17,16 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="@dimen/main_screen_image_height"
                 android:contentDescription="@string/app_logo"
                 android:src="@drawable/img_main_page" />
 
 
             <LinearLayout
                 android:id="@+id/llStart"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="20sp"
+                android:layout_width="@dimen/start_button_size"
+                android:layout_height="@dimen/start_button_size"
+                android:layout_marginTop="@dimen/start_button_margin_top"
                 android:background="@drawable/item_color_accent_border_ripple_background"
                 android:gravity="center">
 
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/btn_start"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="22sp"
+                    android:textSize="@dimen/start_button_label_textsize"
                     android:textStyle="bold" />
 
             </LinearLayout>
