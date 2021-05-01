@@ -30,6 +30,7 @@
                 android:background="@drawable/item_color_accent_border_ripple_background"
                 android:gravity="center">
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -37,6 +38,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/start_button_label_textsize"
                     android:textStyle="bold" />
+
 
             </LinearLayout>
 
