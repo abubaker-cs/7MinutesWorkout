@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GET READY FOR"
+                android:text="@string/get_ready_for"
                 android:textColor="@color/colorAccent"
                 android:textSize="22sp"
                 android:textStyle="bold" />
