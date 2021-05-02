@@ -43,6 +43,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/item_circular_color_accent_border">
 
+                <!-- indeterminate: when we do not know how long the progress will take -->
                 <ProgressBar
                     android:id="@+id/progressBar"
                     style="?android:attr/progressBarStyleHorizontal"
