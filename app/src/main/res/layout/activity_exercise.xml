@@ -8,6 +8,7 @@
         android:orientation="vertical"
         tools:context=".ExerciseActivity">
 
+        <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_exercise_activity"
             android:layout_width="match_parent"
