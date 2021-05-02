@@ -2,7 +2,6 @@
 <!-- It allows to stack multiple xml objects on top of each other-->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-
         <shape
             android:innerRadiusRatio="2.7"
             android:shape="ring"
@@ -13,6 +12,5 @@
             <solid android:color="@color/colorAccent" />
 
         </shape>
-
     </item>
 </layer-list>
