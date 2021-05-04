@@ -24,6 +24,7 @@ class ExerciseActivity : AppCompatActivity() {
     // For Exercise (Challenge)
     private var exerciseTimer: CountDownTimer? = null
     private var exerciseProgress = 0
+    private var exerciseTimerDuration: Long = 30
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -147,7 +148,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         // 10sec - 1sec
         // Here we have started a timer of 10 seconds so the 30000 is milliseconds is 30 seconds and the countdown interval is 1 second so it 1000.
-        exerciseTimer = object : CountDownTimer(30000, 1000) {
+        exerciseTimer = object : CountDownTimer(exerciseTimerDuration * 1000, 1000) {
 
             // On every single tick
             override fun onTick(millisUntilFinished: Long) {
@@ -156,10 +157,12 @@ class ExerciseActivity : AppCompatActivity() {
                 exerciseProgress++
 
                 // Indicates progress bar progress | It will decrease values in the circular progress bar
-                binding.progressBarExercise.progress = 30 - exerciseProgress
+                binding.progressBarExercise.progress =
+                    exerciseTimerDuration.toInt() - exerciseProgress
 
                 // Current progress is set to text view in terms of seconds.
-                binding.tvExerciseTimer.text = (30 - exerciseProgress).toString()
+                binding.tvExerciseTimer.text =
+                    (exerciseTimerDuration.toInt() - exerciseProgress).toString()
 
             }
 
