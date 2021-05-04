@@ -72,6 +72,21 @@ class ExerciseActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+
+        if (restTimer != null) {
+
+            // if restTimer is not null, then set it to cancel
+            restTimer!!.cancel()
+
+            // Reset Progress to 0
+            restProgress = 0
+
+        }
+
+        super.onDestroy()
+    }
+
     /**
      *
      */
