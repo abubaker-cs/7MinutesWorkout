@@ -186,7 +186,7 @@ class ExerciseActivity : AppCompatActivity() {
             // Once Finished | After 10 seconds
             override fun onFinish() {
 
-                // When the 10 seconds will complete this will be executed.
+                // When the 30 seconds will complete this will be executed.
                 Toast.makeText(
                     this@ExerciseActivity,
                     "Here we will start the next rest timer.",
