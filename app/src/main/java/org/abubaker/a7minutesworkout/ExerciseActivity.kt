@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import org.abubaker.a7minutesworkout.databinding.ActivityExerciseBinding
@@ -97,12 +98,15 @@ class ExerciseActivity : AppCompatActivity() {
             // Once Finished | After 10 seconds
             override fun onFinish() {
 
+                binding.llRestView.visibility = View.GONE
+                binding.llExerciseView.visibility = View.VISIBLE
+
                 // When the 10 seconds will complete this will be executed.
-                Toast.makeText(
-                    this@ExerciseActivity,
-                    "Here now we will start the exercise.",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    this@ExerciseActivity,
+//                    "Here now we will start the exercise.",
+//                    Toast.LENGTH_SHORT
+//                ).show()
 
             }
 
