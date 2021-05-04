@@ -105,8 +105,7 @@ class ExerciseActivity : AppCompatActivity() {
             // Once Finished | After 10 seconds
             override fun onFinish() {
 
-                binding.llRestView.visibility = View.GONE
-                binding.llExerciseView.visibility = View.VISIBLE
+
                 setupExerciseView()
 
                 // When the 10 seconds will complete this will be executed.
@@ -142,10 +141,10 @@ class ExerciseActivity : AppCompatActivity() {
      * Code for Exercise Challenge
      */
 
-    /**
-     * setupRestView() -
-     */
     private fun setupExerciseView() {
+
+        binding.llRestView.visibility = View.GONE
+        binding.llExerciseView.visibility = View.VISIBLE
 
         /**
          * Here firstly we will check if the timer is running the and it is not null then cancel the running timer and start the new one.
