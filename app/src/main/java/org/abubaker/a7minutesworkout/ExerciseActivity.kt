@@ -69,7 +69,7 @@ class ExerciseActivity : AppCompatActivity() {
                 ).show()
             }
 
-        }
+        }.start()
     }
 
     override fun onDestroy() {
