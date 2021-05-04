@@ -107,7 +107,7 @@ class ExerciseActivity : AppCompatActivity() {
 
                 binding.llRestView.visibility = View.GONE
                 binding.llExerciseView.visibility = View.VISIBLE
-                setExerciseProgressBar()
+                setupExerciseView()
 
                 // When the 10 seconds will complete this will be executed.
 //                Toast.makeText(
@@ -141,6 +141,30 @@ class ExerciseActivity : AppCompatActivity() {
     /**
      * Code for Exercise Challenge
      */
+
+    /**
+     * setupRestView() -
+     */
+    private fun setupExerciseView() {
+
+        /**
+         * Here firstly we will check if the timer is running the and it is not null then cancel the running timer and start the new one.
+         * And set the progress to initial which is 0.
+         */
+        if (exerciseTimer != null) {
+
+            // rest it
+            exerciseTimer!!.cancel()
+
+            // Put it back to zero
+            exerciseProgress = 0
+
+        }
+
+        // This function is used to set the progress details.
+        setExerciseProgressBar()
+    }
+
     private fun setExerciseProgressBar() {
 
         // Sets the current progress to the specified value = 0
@@ -172,7 +196,7 @@ class ExerciseActivity : AppCompatActivity() {
                 // When the 10 seconds will complete this will be executed.
                 Toast.makeText(
                     this@ExerciseActivity,
-                    "Exercise timer completed.",
+                    "Here we will start the next rest timer.",
                     Toast.LENGTH_SHORT
                 ).show()
 
