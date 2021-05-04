@@ -12,10 +12,10 @@ class ExerciseActivity : AppCompatActivity() {
     // Binding Object
     private lateinit var binding: ActivityExerciseBinding
 
-    //
+    // Variable for Rest Timer and later on we will initialize it.
     private var restTimer: CountDownTimer? = null
 
-    // It will just count up, instead of counting down. i.e. 0...10
+    // Variable for timer progress. As initial value the rest progress is set to 0. As we are about to start.
     private var restProgress = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,24 +26,50 @@ class ExerciseActivity : AppCompatActivity() {
 
         val actionbar = supportActionBar
 
+
         if (actionbar != null) {
             actionbar.setDisplayHomeAsUpEnabled(true)
         }
 
-        // Back Button in the Action Bar (TOP)
+        // Navigate the activity on click on back button of action bar.
         binding.toolbarExerciseActivity.setNavigationOnClickListener {
             onBackPressed()
         }
 
-        //
+        // Calling the function to make it visible on screen
         setupRestView()
-
 
     }
 
+    /**
+     * setupRestView() -
+     */
+    private fun setupRestView() {
+
+        /**
+         * Here firstly we will check if the timer is running the and it is not null then cancel the running timer and start the new one.
+         * And set the progress to initial which is 0.
+         */
+        if (restTimer != null) {
+
+            // rest it
+            restTimer!!.cancel()
+
+            // Put it back to zero
+            restProgress = 0
+
+            // This function is used to set the progress details.
+            setRestProgressBar()
+        }
+    }
+
+    /**
+     * Function is used to set the progress of timer using the progress
+     * Setting up the 10 seconds timer for rest view and updating it continuously
+     */
     private fun setRestProgressBar() {
 
-        // = 0
+        // Sets the current progress to the specified value = 0
         binding.progressBar.progress = restProgress
 
         // 10sec - 1sec
@@ -53,10 +79,10 @@ class ExerciseActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {
                 restProgress++
 
-                // It will decrease values
+                // It will decrease values in the circular progress bar
                 binding.progressBar.progress = 10 - restProgress
 
-                binding.tvTimer.text = (10 - restProgress).toString()
+                binding.tvTimer.text = "${(10 - restProgress).toString()}"
 
             }
 
@@ -87,21 +113,6 @@ class ExerciseActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    /**
-     *
-     */
-    private fun setupRestView() {
-        if (restTimer != null) {
 
-            // rest it
-            restTimer!!.cancel()
-
-            // Put it back to zero
-            restProgress = 0
-
-            // initiate this function
-            setRestProgressBar()
-        }
-    }
 
 }
