@@ -19,6 +19,7 @@ class ExerciseActivity : AppCompatActivity() {
 
     // Variable for timer progress. As initial value the rest progress is set to 0. As we are about to start.
     private var restProgress = 0
+    private var restTimerDuration: Long = 10
 
 
     // For Exercise (Challenge)
@@ -84,7 +85,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         // 10sec - 1sec
         // Here we have started a timer of 10 seconds so the 10000 is milliseconds is 10 seconds and the countdown interval is 1 second so it 1000.
-        restTimer = object : CountDownTimer(10000, 1000) {
+        restTimer = object : CountDownTimer(restTimerDuration * 1000, 1000) {
 
             // On every single tick
             override fun onTick(millisUntilFinished: Long) {
@@ -93,10 +94,10 @@ class ExerciseActivity : AppCompatActivity() {
                 restProgress++
 
                 // Indicates progress bar progress | It will decrease values in the circular progress bar
-                binding.progressBar.progress = 10 - restProgress
+                binding.progressBar.progress = restTimerDuration.toInt() - restProgress
 
                 // Current progress is set to text view in terms of seconds.
-                binding.tvTimer.text = (10 - restProgress).toString()
+                binding.tvTimer.text = (restTimerDuration.toInt() - restProgress).toString()
 
                 Log.i("millisUntilFinished ", millisUntilFinished.toString())
 
@@ -105,15 +106,8 @@ class ExerciseActivity : AppCompatActivity() {
             // Once Finished | After 10 seconds
             override fun onFinish() {
 
-
+                // Initialize the Exercise View
                 setupExerciseView()
-
-                // When the 10 seconds will complete this will be executed.
-//                Toast.makeText(
-//                    this@ExerciseActivity,
-//                    "Here now we will start the exercise.",
-//                    Toast.LENGTH_SHORT
-//                ).show()
 
             }
 
