@@ -9,35 +9,72 @@ class Constants {
          */
         fun defaultExerciseList(): ArrayList<ExerciseModel> {
 
+            // Array
             val exerciseList = ArrayList<ExerciseModel>()
 
+            // EX 1 - jumpingJacks
             val jumpingJacks =
-                ExerciseModel(1, "Jumping Jacks", R.drawable.ic_jumping_jacks, false, false)
-            exerciseList.add(jumpingJacks)
-
-            val wallSit = ExerciseModel(2, "Wall Sit", R.drawable.ic_wall_sit, false, false)
-            exerciseList.add(wallSit)
-
-            val pushUp = ExerciseModel(3, "Push Up", R.drawable.ic_push_up, false, false)
-            exerciseList.add(pushUp)
-
-            val abdominalCrunch =
-                ExerciseModel(4, "Abdominal Crunch", R.drawable.ic_abdominal_crunch, false, false)
-            exerciseList.add(abdominalCrunch)
-
-            val stepUpOnChair =
                 ExerciseModel(
-                    5,
-                    "Step-Up onto Chair",
-                    R.drawable.ic_step_up_onto_chair,
+                    1,
+                    "Jumping Jacks",
+                    R.drawable.ic_jumping_jacks,
                     false,
                     false
                 )
+            exerciseList.add(jumpingJacks)
+
+            // EX 2 - wallSit
+            val wallSit = ExerciseModel(
+                2,
+                "Wall Sit",
+                R.drawable.ic_wall_sit,
+                false,
+                false
+            )
+            exerciseList.add(wallSit)
+
+            // EX 3 - pushUp
+            val pushUp = ExerciseModel(
+                3,
+                "Push Up",
+                R.drawable.ic_push_up,
+                false,
+                false
+            )
+            exerciseList.add(pushUp)
+
+            // EX 4 - abdominalCrunch
+            val abdominalCrunch =
+                ExerciseModel(
+                    4,
+                    "Abdominal Crunch",
+                    R.drawable.ic_abdominal_crunch,
+                    false,
+                    false
+                )
+            exerciseList.add(abdominalCrunch)
+
+            // EX 5 - stepUpOnChair
+            val stepUpOnChair = ExerciseModel(
+                5,
+                "Step-Up onto Chair",
+                R.drawable.ic_step_up_onto_chair,
+                false,
+                false
+            )
             exerciseList.add(stepUpOnChair)
 
-            val squat = ExerciseModel(6, "Squat", R.drawable.ic_squat, false, false)
+            // EX 6 -
+            val squat = ExerciseModel(
+                6,
+                "Squat",
+                R.drawable.ic_squat,
+                false,
+                false
+            )
             exerciseList.add(squat)
 
+            // EX 7 -
             val tricepDipOnChair =
                 ExerciseModel(
                     7,
@@ -48,9 +85,17 @@ class Constants {
                 )
             exerciseList.add(tricepDipOnChair)
 
-            val plank = ExerciseModel(8, "Plank", R.drawable.ic_plank, false, false)
+            // EX 8 - plank
+            val plank = ExerciseModel(
+                8,
+                "Plank",
+                R.drawable.ic_plank,
+                false,
+                false
+            )
             exerciseList.add(plank)
 
+            // EX 9 - highKneesRunningInPlace
             val highKneesRunningInPlace =
                 ExerciseModel(
                     9, "High Knees Running In Place",
@@ -60,9 +105,17 @@ class Constants {
                 )
             exerciseList.add(highKneesRunningInPlace)
 
-            val lunges = ExerciseModel(10, "Lunges", R.drawable.ic_lunge, false, false)
+            // EX 10 - lunges
+            val lunges = ExerciseModel(
+                10,
+                "Lunges",
+                R.drawable.ic_lunge,
+                false,
+                false
+            )
             exerciseList.add(lunges)
 
+            // EX 11 - pushupAndRotation
             val pushupAndRotation =
                 ExerciseModel(
                     11,
@@ -73,9 +126,17 @@ class Constants {
                 )
             exerciseList.add(pushupAndRotation)
 
-            val sidePlank = ExerciseModel(12, "Side Plank", R.drawable.ic_side_plank, false, false)
+            // EX 12 - sidePlank
+            val sidePlank = ExerciseModel(
+                12,
+                "Side Plank",
+                R.drawable.ic_side_plank,
+                false,
+                false
+            )
             exerciseList.add(sidePlank)
 
+            // Return all exercises
             return exerciseList
         }
     }

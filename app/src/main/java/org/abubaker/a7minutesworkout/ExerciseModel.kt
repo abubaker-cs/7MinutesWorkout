@@ -8,6 +8,9 @@ class ExerciseModel(
     private var isSelected: Boolean
 ) {
 
+    /**
+     * 1. id
+     */
     fun getId(): Int {
         return id
     }
@@ -16,6 +19,9 @@ class ExerciseModel(
         this.id = id
     }
 
+    /**
+     * 2. name
+     */
     fun getName(): String {
         return name
     }
@@ -24,6 +30,9 @@ class ExerciseModel(
         this.name = name
     }
 
+    /**
+     * 3. image
+     */
     fun getImage(): Int {
         return image
     }
@@ -32,6 +41,9 @@ class ExerciseModel(
         this.image = image
     }
 
+    /**
+     * 4. isCompleted
+     */
     fun getIsCompleted(): Boolean {
         return isCompleted
     }
@@ -40,6 +52,9 @@ class ExerciseModel(
         this.isCompleted = isCompleted
     }
 
+    /**
+     * 5. isSelected
+     */
     fun getIsSelected(): Boolean {
         return isSelected
     }
