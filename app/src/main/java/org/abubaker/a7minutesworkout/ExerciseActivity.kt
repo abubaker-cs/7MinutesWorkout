@@ -20,6 +20,12 @@ class ExerciseActivity : AppCompatActivity() {
     // Variable for timer progress. As initial value the rest progress is set to 0. As we are about to start.
     private var restProgress = 0
 
+
+    // For Exercise (Challenge)
+    private var exerciseTimer: CountDownTimer? = null
+    private var exerciseProgress = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this@ExerciseActivity, R.layout.activity_exercise)
@@ -100,6 +106,7 @@ class ExerciseActivity : AppCompatActivity() {
 
                 binding.llRestView.visibility = View.GONE
                 binding.llExerciseView.visibility = View.VISIBLE
+                setExerciseProgressBar()
 
                 // When the 10 seconds will complete this will be executed.
 //                Toast.makeText(
@@ -127,6 +134,48 @@ class ExerciseActivity : AppCompatActivity() {
         }
 
         super.onDestroy()
+    }
+
+
+    /**
+     * Code for Exercise Challenge
+     */
+    private fun setExerciseProgressBar() {
+
+        // Sets the current progress to the specified value = 0
+        binding.progressBarExercise.progress = exerciseProgress
+
+        // 10sec - 1sec
+        // Here we have started a timer of 10 seconds so the 10000 is milliseconds is 10 seconds and the countdown interval is 1 second so it 1000.
+        exerciseTimer = object : CountDownTimer(10000, 1000) {
+
+            // On every single tick
+            override fun onTick(millisUntilFinished: Long) {
+
+                // It is increased by 1
+                exerciseProgress++
+
+                // Indicates progress bar progress | It will decrease values in the circular progress bar
+                binding.progressBarExercise.progress = 30 - exerciseProgress
+
+                // Current progress is set to text view in terms of seconds.
+                binding.tvExerciseTimer.text = (30 - exerciseProgress).toString()
+
+            }
+
+            // Once Finished | After 10 seconds
+            override fun onFinish() {
+
+                // When the 10 seconds will complete this will be executed.
+                Toast.makeText(
+                    this@ExerciseActivity,
+                    "Exercise timer completed.",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            }
+
+        }.start()
     }
 
 }

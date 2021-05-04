@@ -110,7 +110,7 @@
 
                 <!-- indeterminate: when we do not know how long the progress will take -->
                 <ProgressBar
-                    android:id="@+id/progressBarChallenge"
+                    android:id="@+id/progressBarExercise"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -131,7 +131,7 @@
 
                     <!-- Text: 10 -->
                     <TextView
-                        android:id="@+id/tvTimerChallenge"
+                        android:id="@+id/tvExerciseTimer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#FFFFFF"
