@@ -146,8 +146,8 @@ class ExerciseActivity : AppCompatActivity() {
         binding.progressBarExercise.progress = exerciseProgress
 
         // 10sec - 1sec
-        // Here we have started a timer of 10 seconds so the 10000 is milliseconds is 10 seconds and the countdown interval is 1 second so it 1000.
-        exerciseTimer = object : CountDownTimer(10000, 1000) {
+        // Here we have started a timer of 10 seconds so the 30000 is milliseconds is 30 seconds and the countdown interval is 1 second so it 1000.
+        exerciseTimer = object : CountDownTimer(30000, 1000) {
 
             // On every single tick
             override fun onTick(millisUntilFinished: Long) {
