@@ -73,32 +73,40 @@ class ExerciseActivity : AppCompatActivity() {
         binding.progressBar.progress = restProgress
 
         // 10sec - 1sec
+        // Here we have started a timer of 10 seconds so the 10000 is milliseconds is 10 seconds and the countdown interval is 1 second so it 1000.
         restTimer = object : CountDownTimer(10000, 1000) {
 
             // On every single tick
             override fun onTick(millisUntilFinished: Long) {
+
+                // It is increased by 1
                 restProgress++
 
-                // It will decrease values in the circular progress bar
+                // Indicates progress bar progress | It will decrease values in the circular progress bar
                 binding.progressBar.progress = 10 - restProgress
 
-                binding.tvTimer.text = "${(10 - restProgress).toString()}"
+                // Current progress is set to text view in terms of seconds.
+                binding.tvTimer.text = (10 - restProgress).toString()
 
             }
 
             // Once Finished | After 10 seconds
             override fun onFinish() {
+
+                // When the 10 seconds will complete this will be executed.
                 Toast.makeText(
                     this@ExerciseActivity,
                     "Here now we will start the exercise.",
                     Toast.LENGTH_SHORT
                 ).show()
+
             }
 
         }.start()
     }
 
-    override fun onDestroy() {
+    // Destroying the timer when closing the activity or app.
+    public override fun onDestroy() {
 
         if (restTimer != null) {
 
@@ -112,7 +120,5 @@ class ExerciseActivity : AppCompatActivity() {
 
         super.onDestroy()
     }
-
-
 
 }
