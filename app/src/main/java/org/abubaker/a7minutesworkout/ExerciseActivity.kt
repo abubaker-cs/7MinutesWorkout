@@ -3,6 +3,7 @@ package org.abubaker.a7minutesworkout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import org.abubaker.a7minutesworkout.databinding.ActivityExerciseBinding
@@ -87,6 +88,8 @@ class ExerciseActivity : AppCompatActivity() {
 
                 // Current progress is set to text view in terms of seconds.
                 binding.tvTimer.text = (10 - restProgress).toString()
+
+                Log.i("millisUntilFinished ", millisUntilFinished.toString())
 
             }
 
