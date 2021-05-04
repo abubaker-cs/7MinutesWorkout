@@ -59,9 +59,10 @@ class ExerciseActivity : AppCompatActivity() {
             // Put it back to zero
             restProgress = 0
 
-            // This function is used to set the progress details.
-            setRestProgressBar()
         }
+
+        // This function is used to set the progress details.
+        setRestProgressBar()
     }
 
     /**
