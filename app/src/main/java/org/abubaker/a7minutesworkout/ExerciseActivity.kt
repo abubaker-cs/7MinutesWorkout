@@ -199,7 +199,7 @@ class ExerciseActivity : AppCompatActivity() {
             // Once Finished | After 10 seconds
             override fun onFinish() {
 
-                if (currentExercisePosition < 11) {
+                if (currentExercisePosition < exerciseList?.size!! - 1) {
                     setupRestView()
                 } else {
                     // After 12th exercise
