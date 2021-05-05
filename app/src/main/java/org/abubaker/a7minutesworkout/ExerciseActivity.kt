@@ -65,6 +65,9 @@ class ExerciseActivity : AppCompatActivity() {
      */
     private fun setupRestView() {
 
+        binding.llRestView.visibility = View.VISIBLE
+        binding.llExerciseView.visibility = View.GONE
+
         /**
          * Here firstly we will check if the timer is running the and it is not null then cancel the running timer and start the new one.
          * And set the progress to initial which is 0.
@@ -209,7 +212,6 @@ class ExerciseActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
 
             }
 
