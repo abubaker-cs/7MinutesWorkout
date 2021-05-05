@@ -1,6 +1,6 @@
 package org.abubaker.a7minutesworkout
 
-class Constants {
+class Exercises {
 
     // It is like static in other languages
     companion object {
