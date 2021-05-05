@@ -108,12 +108,13 @@ class ExerciseActivity : AppCompatActivity() {
                 // Current progress is set to text view in terms of seconds.
                 binding.tvTimer.text = (restTimerDuration.toInt() - restProgress).toString()
 
-                Log.i("millisUntilFinished ", millisUntilFinished.toString())
-
             }
 
             // Once Finished | After 10 seconds
             override fun onFinish() {
+
+                // Increases the current exercise position by 1
+                currentExercisePosition++
 
                 // Initialize the Exercise View
                 setupExerciseView()
