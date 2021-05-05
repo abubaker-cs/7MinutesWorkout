@@ -5,7 +5,6 @@ class Constants {
     // It is like static in other languages
     companion object {
 
-        // The drawable images used here are added in the drawable folder.
         /**
          * Here we are adding all exercises to a single list with all the default values.
          */
