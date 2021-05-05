@@ -202,7 +202,7 @@ class ExerciseActivity : AppCompatActivity() {
                 if (currentExercisePosition < 11) {
                     setupRestView()
                 } else {
-                    // When the 30 seconds will complete this will be executed.
+                    // After 12th exercise
                     Toast.makeText(
                         this@ExerciseActivity,
                         "Congratulations! You have completed the 7 minutes workout.",
