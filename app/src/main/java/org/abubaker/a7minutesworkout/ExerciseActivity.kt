@@ -52,11 +52,11 @@ class ExerciseActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        // Calling the function to make it visible on screen
-        setupRestView()
-
         // It will fetch all data from the Exercises Array
         exerciseList = Exercises.defaultExerciseList()
+
+        // Calling the function to make it visible on screen
+        setupRestView()
 
     }
 
@@ -82,8 +82,12 @@ class ExerciseActivity : AppCompatActivity() {
 
         }
 
+        // Sets the name of next exercise
+        binding.tvUpcomingExerciseName.text = exerciseList!![currentExercisePosition + 1].getName()
+
         // This function is used to set the progress details.
         setRestProgressBar()
+
     }
 
     /**
