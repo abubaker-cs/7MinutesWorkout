@@ -167,6 +167,7 @@ class ExerciseActivity : AppCompatActivity() {
         // This function is used to set the progress details.
         setExerciseProgressBar()
         binding.ivThumbnail.setImageResource(exerciseList!![currentExercisePosition].getImage())
+        binding.tvExerciseName.text = exerciseList!![currentExercisePosition].getName()
 
     }
 
@@ -198,12 +199,17 @@ class ExerciseActivity : AppCompatActivity() {
             // Once Finished | After 10 seconds
             override fun onFinish() {
 
-                // When the 30 seconds will complete this will be executed.
-                Toast.makeText(
-                    this@ExerciseActivity,
-                    "Here we will start the next rest timer.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                if (currentExercisePosition < 11) {
+                    setupRestView()
+                } else {
+                    // When the 30 seconds will complete this will be executed.
+                    Toast.makeText(
+                        this@ExerciseActivity,
+                        "Congratulations! You have completed the 7 minutes workout.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
 
             }
 
