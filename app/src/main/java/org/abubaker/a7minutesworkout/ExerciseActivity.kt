@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import org.abubaker.a7minutesworkout.data.ExerciseModel
 import org.abubaker.a7minutesworkout.data.Exercises
 import org.abubaker.a7minutesworkout.databinding.ActivityExerciseBinding
+import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -78,12 +79,22 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
      */
     private fun setupRestView() {
 
-        // OLD METHOD:
-        val soundURI = Uri.parse("android.resource://org.abubaker.a7minutesworkout/" + R.raw.press_start)
+        try {
 
-        // NEW METHOD:
-        player = MediaPlayer.create(applicationContext, R.raw.press_start)
+            // OLD METHOD:
+            // val soundURI = Uri.parse("android.resource://org.abubaker.a7minutesworkout/" + R.raw.press_start)
 
+            // NEW METHOD:
+            player = MediaPlayer.create(applicationContext, R.raw.press_start)
+            player!!.isLooping = false // only play once
+            player!!.start()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+
+        // Visibility States
         binding.llRestView.visibility = View.VISIBLE
         binding.llExerciseView.visibility = View.GONE
 
@@ -184,6 +195,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             // Then shut it down
             tts!!.shutdown()
 
+        }
+
+        // Player
+        if (player != null) {
+            player!!.stop()
         }
 
         super.onDestroy()
