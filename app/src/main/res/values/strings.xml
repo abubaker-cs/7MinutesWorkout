@@ -3,4 +3,5 @@
     <string name="app_logo">App Logo</string>
     <string name="btn_start">START</string>
     <string name="get_ready_for">GET READY FOR</string>
+    <string name="exercise_thumbnail">Exercise thumbnail</string>
 </resources>

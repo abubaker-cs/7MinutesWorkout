@@ -166,6 +166,8 @@ class ExerciseActivity : AppCompatActivity() {
 
         // This function is used to set the progress details.
         setExerciseProgressBar()
+        binding.ivThumbnail.setImageResource(exerciseList!![currentExercisePosition].getImage())
+
     }
 
     private fun setExerciseProgressBar() {
