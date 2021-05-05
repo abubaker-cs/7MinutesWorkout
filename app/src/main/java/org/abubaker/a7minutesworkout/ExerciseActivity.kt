@@ -1,5 +1,7 @@
 package org.abubaker.a7minutesworkout
 
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -39,6 +41,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     // For Text To Speech
     private var tts: TextToSpeech? = null
 
+    // Media Player
+    private var player: MediaPlayer? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +52,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setSupportActionBar(binding.toolbarExerciseActivity)
 
         val actionbar = supportActionBar
-
 
         if (actionbar != null) {
             actionbar.setDisplayHomeAsUpEnabled(true)
@@ -73,6 +77,12 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
      * setupRestView() -
      */
     private fun setupRestView() {
+
+        // OLD METHOD:
+        val soundURI = Uri.parse("android.resource://org.abubaker.a7minutesworkout/" + R.raw.press_start)
+
+        // NEW METHOD:
+        player = MediaPlayer.create(applicationContext, R.raw.press_start)
 
         binding.llRestView.visibility = View.VISIBLE
         binding.llExerciseView.visibility = View.GONE
