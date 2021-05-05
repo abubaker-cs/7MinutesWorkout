@@ -1,6 +1,8 @@
 package org.abubaker.a7minutesworkout
 
 class Constants {
+
+    // It is like static in other languages
     companion object {
 
         // The drawable images used here are added in the drawable folder.
