@@ -11,6 +11,8 @@ import androidx.databinding.DataBindingUtil
 import org.abubaker.a7minutesworkout.data.ExerciseModel
 import org.abubaker.a7minutesworkout.data.Exercises
 import org.abubaker.a7minutesworkout.databinding.ActivityExerciseBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
@@ -230,10 +232,25 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     /**
-     *
+     * onInit()
      */
     override fun onInit(status: Int) {
 
+        // If TTS works
+        if (status == TextToSpeech.SUCCESS) {
+
+            // set US English as language for tts
+            val result = tts!!.setLanguage(Locale.US)
+
+            // If the language is not supported
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "The Language specified is not supported!")
+            }
+
+        } else {
+            Log.e("TTS", "Initialization Failed!")
+        }
     }
+
 
 }
