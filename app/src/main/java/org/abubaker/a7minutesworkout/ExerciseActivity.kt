@@ -143,6 +143,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     // Destroying the timer when closing the activity or app.
     public override fun onDestroy() {
 
+        // Rest Timer
         if (restTimer != null) {
 
             // if restTimer is not null, then set it to cancel
@@ -150,6 +151,28 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             // Reset Progress to 0
             restProgress = 0
+
+        }
+
+        // Exercise Timer
+        if (exerciseTimer != null) {
+
+            // if restTimer is not null, then set it to cancel
+            exerciseTimer!!.cancel()
+
+            // Reset Progress to 0
+            exerciseProgress = 0
+
+        }
+
+        // TTS
+        if (tts != null) {
+
+            // Stop it
+            tts!!.stop()
+
+            // Then shut it down
+            tts!!.shutdown()
 
         }
 
@@ -179,6 +202,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             exerciseProgress = 0
 
         }
+
+        // TTS: Speak the name of the exercise
+        speakOut(exerciseList!![currentExercisePosition].getName())
 
         // This function is used to set the progress details.
         setExerciseProgressBar()
@@ -250,6 +276,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         } else {
             Log.e("TTS", "Initialization Failed!")
         }
+    }
+
+    //
+    private fun speakOut(text: String) {
+        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
     }
 
 
