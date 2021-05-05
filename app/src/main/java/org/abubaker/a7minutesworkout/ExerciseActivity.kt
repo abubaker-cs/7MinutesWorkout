@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import org.abubaker.a7minutesworkout.data.ExerciseModel
+import org.abubaker.a7minutesworkout.data.Exercises
 import org.abubaker.a7minutesworkout.databinding.ActivityExerciseBinding
 
 class ExerciseActivity : AppCompatActivity() {
@@ -26,6 +28,10 @@ class ExerciseActivity : AppCompatActivity() {
     private var exerciseTimer: CountDownTimer? = null
     private var exerciseProgress = 0
     private var exerciseTimerDuration: Long = 30
+
+    //
+    private var exerciseList: ArrayList<ExerciseModel>? = null
+    private var currentExercisePosition = -1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +54,9 @@ class ExerciseActivity : AppCompatActivity() {
 
         // Calling the function to make it visible on screen
         setupRestView()
+
+        // It will fetch all data from the Exercises Array
+        exerciseList = Exercises.defaultExerciseList()
 
     }
 
