@@ -3,6 +3,7 @@ package org.abubaker.a7minutesworkout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -11,7 +12,7 @@ import org.abubaker.a7minutesworkout.data.ExerciseModel
 import org.abubaker.a7minutesworkout.data.Exercises
 import org.abubaker.a7minutesworkout.databinding.ActivityExerciseBinding
 
-class ExerciseActivity : AppCompatActivity() {
+class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     // Binding Object
     private lateinit var binding: ActivityExerciseBinding
@@ -32,6 +33,9 @@ class ExerciseActivity : AppCompatActivity() {
     //
     private var exerciseList: ArrayList<ExerciseModel>? = null
     private var currentExercisePosition = -1
+
+    // For Text To Speech
+    private var tts: TextToSpeech? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +58,9 @@ class ExerciseActivity : AppCompatActivity() {
 
         // It will fetch all data from the Exercises Array
         exerciseList = Exercises.defaultExerciseList()
+
+        // initialize TTS
+        tts = TextToSpeech(this, this)
 
         // Calling the function to make it visible on screen
         setupRestView()
@@ -220,6 +227,13 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
         }.start()
+    }
+
+    /**
+     *
+     */
+    override fun onInit(status: Int) {
+
     }
 
 }
