@@ -1,4 +1,6 @@
-package org.abubaker.a7minutesworkout
+package org.abubaker.a7minutesworkout.data
+
+import org.abubaker.a7minutesworkout.R
 
 class Exercises {
 

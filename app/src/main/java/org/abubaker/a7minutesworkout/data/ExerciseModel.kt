@@ -1,4 +1,4 @@
-package org.abubaker.a7minutesworkout
+package org.abubaker.a7minutesworkout.data
 
 class ExerciseModel(
     private var id: Int,
