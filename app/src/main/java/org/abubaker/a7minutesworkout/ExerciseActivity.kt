@@ -290,7 +290,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     // set not active, is completed and notify data changes
                     exerciseList!![currentExercisePosition].setIsSelected(false)
                     exerciseList!![currentExercisePosition].setIsCompleted(true)
-                    exerciseAdapter.notifyDataSetChanged()
+                    exerciseAdapter!!.notifyDataSetChanged()
 
                     setupRestView()
 
