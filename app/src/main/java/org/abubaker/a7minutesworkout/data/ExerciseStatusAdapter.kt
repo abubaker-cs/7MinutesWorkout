@@ -56,13 +56,16 @@ class ExerciseStatusAdapter(val items: ArrayList<ExerciseModel>, val context: Co
     class ViewHolder(private val binding: ItemExerciseStatusBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        // Binding initiated
+        // Bind item to the ExerciseModel.kt file
         fun bind(model: ExerciseModel) {
 
-            // Bind the item.position to the tvItem TextView
+            // Using getID() method, declared in the ExerciseModel.kt file
+            // bind the item.position to the tvItem TextView
             binding.tvItem.text = model.getId().toString()
 
         }
+
+        // holder.tvItem.text = model.getId().toString()
 
     }
 

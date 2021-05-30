@@ -10,7 +10,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.abubaker.a7minutesworkout.data.ExerciseModel
+import org.abubaker.a7minutesworkout.data.ExerciseStatusAdapter
 import org.abubaker.a7minutesworkout.data.Exercises
 import org.abubaker.a7minutesworkout.databinding.ActivityExerciseBinding
 import java.lang.Exception
@@ -44,6 +46,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     // Media Player
     private var player: MediaPlayer? = null
+
+    // Adapter
+    private var exerciseAdapter: ExerciseStatusAdapter? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -307,6 +312,21 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     //
     private fun speakOut(text: String) {
         tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+    }
+
+    //
+    private fun setupExerciseStatusRecyclerView() {
+
+        //
+        binding.rvExerciseStatus.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        //
+        exerciseAdapter = ExerciseStatusAdapter(exerciseList!!, this)
+
+        //
+        binding.rvExerciseStatus.adapter = exerciseAdapter
+
     }
 
 
