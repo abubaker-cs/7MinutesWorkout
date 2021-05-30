@@ -16,10 +16,13 @@ class ExerciseStatusAdapter(val items: ArrayList<ExerciseModel>, val context: Co
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         // Get reference to the UI Element using databinding
+        // ItemExerciseStatusBinding = item_exercise_status.xml file
         val binding =
             ItemExerciseStatusBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        // and pass it to ViewHolder()
+        // return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_exercise_status, parent, false))
+
+        // and pass it to our custom ViewHolder() declared as a class at the bottom of this file
         return ViewHolder(binding)
     }
 
@@ -35,25 +38,30 @@ class ExerciseStatusAdapter(val items: ArrayList<ExerciseModel>, val context: Co
 
     /**
      * 03 - onBindViewHolder() - Binds each item in the ArrayList to a View
+     * We want to assign text to every single circle, otherwise they will be empty
+     * or they will just have 1
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        // Get reference to the current / looped item in the list
+        // Loop: Get the position of the item we are looking at
         val model: ExerciseModel = items[position]
 
-        // Bind it to the holder
+        // Using our Custom ViewHolder, bind the selected item.position to the holder
         holder.bind(model)
     }
 
     /**
-     * ViewHolder() -
+     * 04 - ViewHolder() - Our Custom ViewHolder
      */
     class ViewHolder(private val binding: ItemExerciseStatusBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         // Binding initiated
         fun bind(model: ExerciseModel) {
+
+            // Bind the item.position to the tvItem TextView
             binding.tvItem.text = model.getId().toString()
+
         }
 
     }
