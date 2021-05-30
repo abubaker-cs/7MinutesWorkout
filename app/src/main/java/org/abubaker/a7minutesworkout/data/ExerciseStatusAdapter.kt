@@ -50,10 +50,6 @@ class ExerciseStatusAdapter(val items: ArrayList<ExerciseModel>, val context: Co
         val model: ExerciseModel = items[position]
 
         // Using our Custom ViewHolder, bind the selected item.position to the holder
-        // holder.tvItem.text = model.getId().toString()
-
-        // val context: Context = holder.itemView.getContext()
-
         holder.bind(model)
 
     }
@@ -71,46 +67,45 @@ class ExerciseStatusAdapter(val items: ArrayList<ExerciseModel>, val context: Co
             // bind the item.position to the tvItem TextView
             binding.tvItem.text = model.getId().toString()
 
-            if (model.getIsSelected()) {
+            when {
+                model.getIsSelected() -> {
 
-                // val context: Context = holder.itemView.getContext()
+                    // On Started: White Background
+                    binding.tvItem.background = ContextCompat.getDrawable(
+                        itemView.context,
+                        R.drawable.item_circular_thin_color_accent_border
+                    )
 
-                // On Started: White Background
-                binding.tvItem.background = ContextCompat.getDrawable(
-                    itemView.context,
-                    R.drawable.item_circular_thin_color_accent_border
-                )
+                    //
+                    binding.tvItem.setTextColor(Color.parseColor("#212121"))
 
-                //
-                binding.tvItem.setTextColor(Color.parseColor("#212121"))
+                }
+                model.getIsCompleted() -> {
 
-            } else if (model.getIsCompleted()) {
+                    // On Completed: Green Background
+                    binding.tvItem.background = ContextCompat.getDrawable(
+                        itemView.context,
+                        R.drawable.item_circular_color_accent_background
+                    )
 
-                // On Completed: Green Background
-                binding.tvItem.background = ContextCompat.getDrawable(
-                    itemView.context,
-                    R.drawable.item_circular_color_accent_background
-                )
+                    //
+                    binding.tvItem.setTextColor(Color.parseColor("#FFFFFF"))
 
-                //
-                binding.tvItem.setTextColor(Color.parseColor("#FFFFFF"))
+                }
+                else -> {
 
-            } else {
+                    // Default Color: Gray Background
+                    binding.tvItem.background = ContextCompat.getDrawable(
+                        itemView.context,
+                        R.drawable.item_circular_color_gray_background
+                    )
 
-                // Default Color: Gray Background
-                binding.tvItem.background = ContextCompat.getDrawable(
-                    itemView.context,
-                    R.drawable.item_circular_color_gray_background
-                )
+                    //
+                    binding.tvItem.setTextColor(Color.parseColor("#212121"))
 
-                //
-                binding.tvItem.setTextColor(Color.parseColor("#212121"))
-
+                }
             }
         }
-
-        // holder.tvItem.text = model.getId().toString()
-
     }
 
 
