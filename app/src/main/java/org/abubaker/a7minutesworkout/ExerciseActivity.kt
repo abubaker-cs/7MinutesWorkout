@@ -164,6 +164,12 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 // Increases the current exercise position by 1
                 currentExercisePosition++
 
+                // Set current position to be selected
+                exerciseList!![currentExercisePosition].setIsSelected(true)
+
+                // Recalculate view on the data change
+                exerciseAdapter!!.notifyDataSetChanged()
+
                 // Initialize the Exercise View
                 setupExerciseView()
 
@@ -279,7 +285,16 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             override fun onFinish() {
 
                 if (currentExercisePosition < exerciseList?.size!! - 1) {
+
+                    // Make sure that the finished exercise is:
+                    // set not active, is completed and notify data changes
+                    exerciseList!![currentExercisePosition].setIsSelected(false)
+                    exerciseList!![currentExercisePosition].setIsCompleted(true)
+                    exerciseAdapter.notifyDataSetChanged()
+
                     setupRestView()
+
+
                 } else {
                     // After 12th exercise
                     Toast.makeText(
