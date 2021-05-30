@@ -77,6 +77,12 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         // Calling the function to make it visible on screen
         setupRestView()
 
+        //
+        // exerciseList = Constants.defaultExerciseList()
+
+        //
+        setupExerciseStatusRecyclerView()
+
     }
 
     /**
