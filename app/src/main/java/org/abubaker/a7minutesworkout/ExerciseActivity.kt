@@ -387,15 +387,16 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         binding.tvYes.setOnClickListener(View.OnClickListener
         {
-            Toast.makeText(this@ExerciseActivity, "clicked submit", Toast.LENGTH_LONG).show()
+            finish() // It will move the MAIN Activity
             customDialog.dismiss() // Dialog will be dismissed
         })
 
         binding.tvNo.setOnClickListener(View.OnClickListener
         {
-            Toast.makeText(this@ExerciseActivity, "clicked cancel", Toast.LENGTH_LONG).show()
+            // It will only close the dialog
             customDialog.dismiss()
         })
+
         //Start the dialog and display it on screen.
         customDialog.show()
     }
