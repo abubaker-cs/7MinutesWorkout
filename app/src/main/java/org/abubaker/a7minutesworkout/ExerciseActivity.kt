@@ -1,5 +1,6 @@
 package org.abubaker.a7minutesworkout
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -29,13 +30,12 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     // Variable for timer progress. As initial value the rest progress is set to 0. As we are about to start.
     private var restProgress = 0
-    private var restTimerDuration: Long = 10
-
+    private var restTimerDuration: Long = 1 // 10 - Being used in setRestProgressBar()
 
     // For Exercise (Challenge)
     private var exerciseTimer: CountDownTimer? = null
     private var exerciseProgress = 0
-    private var exerciseTimerDuration: Long = 30
+    private var exerciseTimerDuration: Long = 1 // 30
 
     //
     private var exerciseList: ArrayList<ExerciseModel>? = null
@@ -281,9 +281,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             }
 
-            // Once Finished | After 10 seconds
+            // Check if all exercises are completed?
             override fun onFinish() {
 
+                // If there are more exercises to be completed:
+                // FOR TESTING ONLY: if (currentExercisePosition < 2) {
                 if (currentExercisePosition < exerciseList?.size!! - 1) {
 
                     // Make sure that the finished exercise is:
@@ -294,14 +296,26 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                     setupRestView()
 
-
                 } else {
-                    // After 12th exercise
-                    Toast.makeText(
-                        this@ExerciseActivity,
-                        "Congratulations! You have completed the 7 minutes workout.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    // If all exercises are completed:
+
+                    // It is important, because if we will press the BACK button then we will not
+                    // be sent back to the exercise counter, rather we will see HOME screen
+                    finish()
+
+                    /**
+                     * ::class.java = getClass()
+                     * To retrieve the Java Class of an object, use the JAVA extension property on a class reference
+                     * Example: val fooClass = foo::class.java
+                     */
+                    val intent = Intent(this@ExerciseActivity, FinishActivity::class.java)
+                    startActivity(intent)
+
+                    // Toast.makeText(
+                    //    this@ExerciseActivity,
+                    //    "Congratulations! You have completed the 7 minutes workout.",
+                    //    Toast.LENGTH_SHORT
+                    // ).show()
                 }
 
             }
