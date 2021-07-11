@@ -9,4 +9,8 @@
     <string name="finish">FINISH</string>
     <string name="image">image</string>
     <string name="end">END</string>
+    <string name="confirmation_question">Are you sure?</string>
+    <string name="confirmation_desc">This will stop your workout. You\'ve come this far, are you sure you want to quit?</string>
+    <string name="btn_yes">YES</string>
+    <string name="btn_no">NO</string>
 </resources>

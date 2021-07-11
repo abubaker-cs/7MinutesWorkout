@@ -1,5 +1,6 @@
 package org.abubaker.a7minutesworkout
 
+import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
@@ -16,6 +17,8 @@ import org.abubaker.a7minutesworkout.data.ExerciseModel
 import org.abubaker.a7minutesworkout.data.ExerciseStatusAdapter
 import org.abubaker.a7minutesworkout.data.Exercises
 import org.abubaker.a7minutesworkout.databinding.ActivityExerciseBinding
+import org.abubaker.a7minutesworkout.databinding.ActivityFinishBinding
+import org.abubaker.a7minutesworkout.databinding.DialogCustomBackConfirmationBinding
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
@@ -65,7 +68,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         // Navigate the activity on click on back button of action bar.
         binding.toolbarExerciseActivity.setNavigationOnClickListener {
-            onBackPressed()
+
+            // onBackPressed()
+
+            customDialogForBackButton()
         }
 
         // It will fetch all data from the Exercises Array
@@ -362,6 +368,36 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         //
         binding.rvExerciseStatus.adapter = exerciseAdapter
 
+    }
+
+    /**
+     * Function is used to launch the custom confirmation dialog.
+     */
+    // Performing the steps to show the custom dialog for back button confirmation while the exercise is going on.
+    private fun customDialogForBackButton() {
+
+        val customDialog = Dialog(this@ExerciseActivity)
+
+        val binding: DialogCustomBackConfirmationBinding =
+            DialogCustomBackConfirmationBinding.inflate(layoutInflater)
+
+        /*Set the screen content from a layout resource.
+        The resource will be inflated, adding all top-level views to the screen.*/
+        customDialog.setContentView(binding.root)
+
+        binding.tvYes.setOnClickListener(View.OnClickListener
+        {
+            Toast.makeText(this@ExerciseActivity, "clicked submit", Toast.LENGTH_LONG).show()
+            customDialog.dismiss() // Dialog will be dismissed
+        })
+
+        binding.tvNo.setOnClickListener(View.OnClickListener
+        {
+            Toast.makeText(this@ExerciseActivity, "clicked cancel", Toast.LENGTH_LONG).show()
+            customDialog.dismiss()
+        })
+        //Start the dialog and display it on screen.
+        customDialog.show()
     }
 
 
