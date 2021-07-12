@@ -34,5 +34,4 @@ class BMIActivity : AppCompatActivity() {
 
     }
 
-
 }
