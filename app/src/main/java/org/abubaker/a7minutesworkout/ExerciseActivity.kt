@@ -387,7 +387,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         binding.tvYes.setOnClickListener(View.OnClickListener
         {
-            finish() // It will move the MAIN Activity
+            finish() // It will move to the MAIN Activity
             customDialog.dismiss() // Dialog will be dismissed
         })
 

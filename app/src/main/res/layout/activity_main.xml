@@ -22,6 +22,7 @@
                 android:src="@drawable/img_main_page" />
 
 
+            <!-- ICON -->
             <LinearLayout
                 android:id="@+id/llStart"
                 android:layout_width="@dimen/start_button_size"
@@ -30,7 +31,7 @@
                 android:background="@drawable/item_color_accent_border_ripple_background"
                 android:gravity="center">
 
-
+                <!-- Title: Start -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -40,6 +41,42 @@
                     android:textStyle="bold" />
 
 
+            </LinearLayout>
+
+            <!-- Custom Button: BMI Calculator -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- ICON: BMI -->
+                <LinearLayout
+                    android:id="@+id/llBMI"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/item_circular_color_accent_background"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/calculator_title"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Title: Calculator -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/calculator_desc"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
