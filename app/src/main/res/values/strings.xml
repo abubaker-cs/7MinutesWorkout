@@ -15,4 +15,8 @@
     <string name="btn_no">NO</string>
     <string name="calculator_title">BMI</string>
     <string name="calculator_desc">Calculator</string>
+    <string name="lbl_height">HEIGHT (in cm)</string>
+    <string name="lbl_bmi">YOUR BMI</string>
+    <string name="lbl_calculate">CALCULATE</string>
+    <string name="lbl_weight">WEIGHT (in kg)</string>
 </resources>

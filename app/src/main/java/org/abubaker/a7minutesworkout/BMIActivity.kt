@@ -61,7 +61,7 @@ class BMIActivity : AppCompatActivity() {
     }
 
     /**
-     * Function is used to validate the input values for METRIC UNITS.
+     * Validate the input values for METRIC UNITS.
      */
     private fun validateMetricUnits(): Boolean {
 
@@ -77,10 +77,11 @@ class BMIActivity : AppCompatActivity() {
     }
 
     /**
-     * Function is used to display the result of METRIC UNITS.
+     * Display the result of METRIC UNITS.
      */
     private fun displayBMIResult(bmi: Float) {
 
+        // Declare variables
         val bmiLabel: String
         val bmiDescription: String
 
@@ -100,26 +101,28 @@ class BMIActivity : AppCompatActivity() {
             bmiLabel = "Overweight"
             bmiDescription = "Oops! You really need to take care of your yourself! Workout maybe!"
         } else if (bmi.compareTo(30f) > 0 && bmi.compareTo(35f) <= 0) {
-            bmiLabel = "Obese Class | (Moderately obese)"
+            bmiLabel = "Obese Class 1 - (Moderately obese)"
             bmiDescription = "Oops! You really need to take care of your yourself! Workout maybe!"
         } else if (bmi.compareTo(35f) > 0 && bmi.compareTo(40f) <= 0) {
-            bmiLabel = "Obese Class || (Severely obese)"
+            bmiLabel = "Obese Class 2 - (Severely obese)"
             bmiDescription = "OMG! You are in a very dangerous condition! Act now!"
         } else {
-            bmiLabel = "Obese Class ||| (Very Severely obese)"
+            bmiLabel = "Obese Class 3 - (Very Severely obese)"
             bmiDescription = "OMG! You are in a very dangerous condition! Act now!"
         }
 
+        // Toggle hidden state to Visible for following components:
         binding.tvYourBMI.visibility = View.VISIBLE
         binding.tvBMIValue.visibility = View.VISIBLE
         binding.tvBMIType.visibility = View.VISIBLE
         binding.tvBMIDescription.visibility = View.VISIBLE
 
-        // This is used to round the result value to 2 decimal values after "."
+        // Round the result value to 2 decimal values after "."
         val bmiValue = BigDecimal(bmi.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString()
 
-        binding.tvBMIValue.text = bmiValue // Value is set to TextView
-        binding.tvBMIType.text = bmiLabel // Label is set to TextView
-        binding.tvBMIDescription.text = bmiDescription // Description is set to TextView
+        // Populate values so the user can see details
+        binding.tvBMIValue.text = bmiValue // Value
+        binding.tvBMIType.text = bmiLabel // Label
+        binding.tvBMIDescription.text = bmiDescription // Description
     }
 }
