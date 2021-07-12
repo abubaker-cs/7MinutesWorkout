@@ -23,7 +23,7 @@ class BMIActivity : AppCompatActivity() {
         if (actionbar != null) {
             // Set back Button
             actionbar.setDisplayHomeAsUpEnabled(true)
-            actionbar.title = "CALCULATE ME !!!"
+            actionbar.title = "CALCULATE ME"
         }
 
         binding.toolbarBmiActivity.setNavigationOnClickListener {
