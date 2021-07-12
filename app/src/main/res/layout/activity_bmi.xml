@@ -23,7 +23,13 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <!-- com.google.android.material.textfield.TextInputLayout -->
+            <!--
+                Note: I had to update the AndroidManifest.xml for this file,
+                so following Material Components can be used
+
+                Changed: android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                With: android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+             -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilMetricUnitWeight"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
