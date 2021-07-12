@@ -42,16 +42,18 @@ class BMIActivity : AppCompatActivity() {
             // The values are validated.
             if (validateMetricUnits()) {
 
-                // Height (convert to float value) / 100 = Meter
+                // 1. Height (convert to float value) / 100 = Meter
                 val heightValue: Float = binding.etMetricUnitHeight.text.toString().toFloat() / 100
 
-                // Weight (convert to float value)
+                // 2. Weight (convert to float value)
                 val weightValue: Float = binding.etMetricUnitWeight.text.toString().toFloat()
 
-                // Formula: BMI value is calculated in METRIC UNITS using the height and weight value.
+                // 3. Formula: BMI value is calculated in METRIC UNITS using the height and weight value.
                 val bmi = weightValue / (heightValue * heightValue)
 
+                // 4. Function: Calculate BMI Range and Display Summary
                 displayBMIResult(bmi)
+
             } else {
                 // Error: Inform the user to provide VALID values
                 Toast.makeText(this@BMIActivity, "Please enter valid values.", Toast.LENGTH_SHORT)
@@ -153,11 +155,11 @@ class BMIActivity : AppCompatActivity() {
         binding.tvBMIType.visibility = View.VISIBLE
         binding.tvBMIDescription.visibility = View.VISIBLE
 
-        // Round the result value to 2 decimal values after "."
+        // BMI Value: Round the result to 2 decimal values after "."
         val bmiValue = BigDecimal(bmi.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString()
 
         // Populate values so the user can see details
-        binding.tvBMIValue.text = bmiValue // Value
+        binding.tvBMIValue.text = bmiValue // BMI Value
         binding.tvBMIType.text = bmiLabel // Label
         binding.tvBMIDescription.text = bmiDescription // Description
 
