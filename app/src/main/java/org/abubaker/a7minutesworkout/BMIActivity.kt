@@ -92,6 +92,11 @@ class BMIActivity : AppCompatActivity() {
         // When = Switch Statement
         when {
 
+            // compareTo():
+            //      0 = EQUAL
+            //      -ve = Less than
+            //      +ve = Greater than
+
             // BMI Range: < 15
             bmi.compareTo(15f) <= 0 -> {
                 bmiLabel = "Very severely underweight"
