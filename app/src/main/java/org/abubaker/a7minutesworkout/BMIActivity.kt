@@ -42,17 +42,18 @@ class BMIActivity : AppCompatActivity() {
             // The values are validated.
             if (validateMetricUnits()) {
 
-                // The height value is converted to a float value and divided by 100 to convert it to meter.
+                // Height (convert to float value) / 100 = Meter
                 val heightValue: Float = binding.etMetricUnitHeight.text.toString().toFloat() / 100
 
-                // The weight value is converted to a float value
+                // Weight (convert to float value)
                 val weightValue: Float = binding.etMetricUnitWeight.text.toString().toFloat()
 
-                // BMI value is calculated in METRIC UNITS using the height and weight value.
+                // Formula: BMI value is calculated in METRIC UNITS using the height and weight value.
                 val bmi = weightValue / (heightValue * heightValue)
 
                 displayBMIResult(bmi)
             } else {
+                // Error: Inform the user to provide VALID values
                 Toast.makeText(this@BMIActivity, "Please enter valid values.", Toast.LENGTH_SHORT)
                     .show()
             }
@@ -65,14 +66,17 @@ class BMIActivity : AppCompatActivity() {
      */
     private fun validateMetricUnits(): Boolean {
 
+        // Default value
         var isValid = true
 
+        // Are Weight and Height fields EMPTY?
         if (binding.etMetricUnitWeight.text.toString().isEmpty()) {
-            isValid = true
+            isValid = false
         } else if (binding.etMetricUnitHeight.text.toString().isEmpty()) {
             isValid = false
         }
 
+        // Return result
         return isValid
     }
 
@@ -85,30 +89,57 @@ class BMIActivity : AppCompatActivity() {
         val bmiLabel: String
         val bmiDescription: String
 
-        if (bmi.compareTo(15f) <= 0) {
-            bmiLabel = "Very severely underweight"
-            bmiDescription = "Oops! You really need to take better care of yourself! Eat more!"
-        } else if (bmi.compareTo(15f) > 0 && bmi.compareTo(16f) <= 0) {
-            bmiLabel = "Severely underweight"
-            bmiDescription = "Oops!You really need to take better care of yourself! Eat more!"
-        } else if (bmi.compareTo(16f) > 0 && bmi.compareTo(18.5f) <= 0) {
-            bmiLabel = "Underweight"
-            bmiDescription = "Oops! You really need to take better care of yourself! Eat more!"
-        } else if (bmi.compareTo(18.5f) > 0 && bmi.compareTo(25f) <= 0) {
-            bmiLabel = "Normal"
-            bmiDescription = "Congratulations! You are in a good shape!"
-        } else if (bmi.compareTo(25f) > 0 && bmi.compareTo(30f) <= 0) {
-            bmiLabel = "Overweight"
-            bmiDescription = "Oops! You really need to take care of your yourself! Workout maybe!"
-        } else if (bmi.compareTo(30f) > 0 && bmi.compareTo(35f) <= 0) {
-            bmiLabel = "Obese Class 1 - (Moderately obese)"
-            bmiDescription = "Oops! You really need to take care of your yourself! Workout maybe!"
-        } else if (bmi.compareTo(35f) > 0 && bmi.compareTo(40f) <= 0) {
-            bmiLabel = "Obese Class 2 - (Severely obese)"
-            bmiDescription = "OMG! You are in a very dangerous condition! Act now!"
-        } else {
-            bmiLabel = "Obese Class 3 - (Very Severely obese)"
-            bmiDescription = "OMG! You are in a very dangerous condition! Act now!"
+        // When = Switch Statement
+        when {
+
+            // BMI Range: < 15
+            bmi.compareTo(15f) <= 0 -> {
+                bmiLabel = "Very severely underweight"
+                bmiDescription = "Oops! You really need to take better care of yourself! Eat more!"
+            }
+
+            // BMI Range: 15 - 16
+            bmi.compareTo(15f) > 0 && bmi.compareTo(16f) <= 0 -> {
+                bmiLabel = "Severely underweight"
+                bmiDescription = "Oops!You really need to take better care of yourself! Eat more!"
+            }
+
+            // BMI Range: 16 - 18.5
+            bmi.compareTo(16f) > 0 && bmi.compareTo(18.5f) <= 0 -> {
+                bmiLabel = "Underweight"
+                bmiDescription = "Oops! You really need to take better care of yourself! Eat more!"
+            }
+
+            // BMI Range: 18.5 - 25
+            bmi.compareTo(18.5f) > 0 && bmi.compareTo(25f) <= 0 -> {
+                bmiLabel = "Normal"
+                bmiDescription = "Congratulations! You are in a good shape!"
+            }
+
+            // BMI Range: 25 - 30
+            bmi.compareTo(25f) > 0 && bmi.compareTo(30f) <= 0 -> {
+                bmiLabel = "Overweight"
+                bmiDescription = "Oops! You really need to take care of yourself! Workout maybe!"
+            }
+
+            // BMI Range: 30 - 35
+            bmi.compareTo(30f) > 0 && bmi.compareTo(35f) <= 0 -> {
+                bmiLabel = "Obese Class 1 - (Moderately obese)"
+                bmiDescription = "Oops! You really need to take care of yourself! Workout maybe!"
+            }
+
+            // BMI Range: 35 - 40
+            bmi.compareTo(35f) > 0 && bmi.compareTo(40f) <= 0 -> {
+                bmiLabel = "Obese Class 2 - (Severely obese)"
+                bmiDescription = "OMG! You are in a very dangerous condition! Act now!"
+            }
+
+            // BMI Range: 40+
+            else -> {
+                bmiLabel = "Obese Class 3 - (Very Severely obese)"
+                bmiDescription = "OMG! You are in a very dangerous condition! Act now!"
+            }
+
         }
 
         // Toggle hidden state to Visible for following components:
@@ -124,5 +155,6 @@ class BMIActivity : AppCompatActivity() {
         binding.tvBMIValue.text = bmiValue // Value
         binding.tvBMIType.text = bmiLabel // Label
         binding.tvBMIDescription.text = bmiDescription // Description
+
     }
 }
