@@ -19,4 +19,6 @@
     <string name="lbl_bmi">YOUR BMI</string>
     <string name="lbl_calculate">CALCULATE</string>
     <string name="lbl_weight">WEIGHT (in kg)</string>
+    <string name="units_metric">METRIC UNITS</string>
+    <string name="units_us">US UNITS</string>
 </resources>

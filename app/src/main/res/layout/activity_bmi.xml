@@ -15,6 +15,10 @@
             android:layout_height="?android:attr/actionBarSize"
             android:background="#FFFFFF" />
 
+        <!--
+            Select the Unit System
+            using android:background we are referencing to the external XML design file.
+         -->
         <RadioGroup
             android:id="@+id/rgUnits"
             android:layout_width="match_parent"
@@ -24,6 +28,15 @@
             android:background="@drawable/drawable_radio_group_tab_background"
             android:orientation="horizontal">
 
+            <!--
+                @drawable_units_tab_text_color_selector has colors for both states:
+                1. selected = state_checked="true"
+                2. unselected = state_checked="false"
+
+                 android:button="@null" = CIRCLE RADIO ICON
+            -->
+
+            <!-- Option 1 : Metric Units -->
             <RadioButton
                 android:id="@+id/rbMetricUnits"
                 android:layout_width="0dp"
@@ -33,11 +46,12 @@
                 android:button="@null"
                 android:checked="true"
                 android:gravity="center"
-                android:text="METRIC UNITS"
+                android:text="@string/units_metric"
                 android:textColor="@drawable/drawable_units_tab_text_color_selector"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Option 2 : US Units -->
             <RadioButton
                 android:id="@+id/rbUsUnits"
                 android:layout_width="0dp"
@@ -47,7 +61,7 @@
                 android:button="@null"
                 android:checked="false"
                 android:gravity="center"
-                android:text="US UNITS"
+                android:text="@string/units_us"
                 android:textColor="@drawable/drawable_units_tab_text_color_selector"
                 android:textSize="16sp"
                 android:textStyle="bold" />
