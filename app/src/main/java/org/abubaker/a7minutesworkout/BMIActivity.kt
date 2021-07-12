@@ -21,14 +21,15 @@ class BMIActivity : AppCompatActivity() {
         val actionbar = supportActionBar
 
         if (actionbar != null) {
-            // Set back Button
+            // Enable back Button
             actionbar.setDisplayHomeAsUpEnabled(true)
+
+            // Changing the default title
             actionbar.title = "CALCULATE ME"
         }
 
         binding.toolbarBmiActivity.setNavigationOnClickListener {
-            // It will try to go back, but since there will be no pending exercise, that's why
-            // it will redirect to the HOME Screen
+            // Redirect to the HOME Screen
             onBackPressed()
         }
 
