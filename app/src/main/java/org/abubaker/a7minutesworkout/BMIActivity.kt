@@ -46,24 +46,63 @@ class BMIActivity : AppCompatActivity() {
         // Button: Calculate Units
         binding.btnCalculateUnits.setOnClickListener {
             // The values are validated.
-            if (validateMetricUnits()) {
+            if (currentVisibleView.equals(METRIC_UNITS_VIEW)) {
+                if (validateMetricUnits()) {
 
-                // 1. Height (convert to float value) / 100 = Meter
-                val heightValue: Float = binding.etMetricUnitHeight.text.toString().toFloat() / 100
+                    // 1. Height (convert to float value) / 100 = Meter
+                    val heightValue: Float =
+                        binding.etMetricUnitHeight.text.toString().toFloat() / 100
 
-                // 2. Weight (convert to float value)
-                val weightValue: Float = binding.etMetricUnitWeight.text.toString().toFloat()
+                    // 2. Weight (convert to float value)
+                    val weightValue: Float = binding.etMetricUnitWeight.text.toString().toFloat()
 
-                // 3. Formula: BMI value is calculated in METRIC UNITS using the height and weight value.
-                val bmi = weightValue / (heightValue * heightValue)
+                    // 3. Formula: BMI value is calculated in METRIC UNITS using the height and weight value.
+                    val bmi = weightValue / (heightValue * heightValue)
 
-                // 4. Function: Calculate BMI Range and Display Summary
-                displayBMIResult(bmi)
+                    // 4. Function: Calculate BMI Range and Display Summary
+                    displayBMIResult(bmi)
 
+                } else {
+                    // Error: Inform the user to provide VALID values
+                    Toast.makeText(
+                        this@BMIActivity,
+                        "Please enter valid values.",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
             } else {
-                // Error: Inform the user to provide VALID values
-                Toast.makeText(this@BMIActivity, "Please enter valid values.", Toast.LENGTH_SHORT)
-                    .show()
+                if (validateUSUnits()) {
+
+                    // 1. Height - Feet
+                    val usUnitHeightValueFeet: String = binding.etUsUnitHeightFeet.text.toString()
+
+                    // 1. Height - Inch
+                    val usUnitHeightValueInch: String = binding.etUsUnitHeightInch.text.toString()
+
+                    // 1. Here the Height Feet and Inch values are merged and multiplied by 12 for converting it to inches.
+                    val heightValue =
+                        usUnitHeightValueInch.toFloat() + usUnitHeightValueFeet.toFloat() * 12
+
+                    // 2. Weight
+                    val usUnitWeightValue: Float = binding.etUsUnitWeight.text.toString().toFloat()
+
+                    // 3. Calculating BMI - This is the Formula for US UNITS result:
+                    // https://www.cdc.gov/healthyweight/assessing/bmi/childrens_bmi/childrens_bmi_formula.html
+                    val bmi = 703 * (usUnitWeightValue / (heightValue * heightValue))
+
+                    // 4. Function: Calculate BMI Range and Display Summary
+                    displayBMIResult(bmi)
+
+                } else {
+                    // Error: Inform the user to provide VALID values
+                    Toast.makeText(
+                        this@BMIActivity,
+                        "Please enter valid values.",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
             }
         }
 
@@ -90,10 +129,28 @@ class BMIActivity : AppCompatActivity() {
         var isValid = true
 
         // Are Weight and Height fields EMPTY?
-        if (binding.etMetricUnitWeight.text.toString().isEmpty()) {
-            isValid = false
-        } else if (binding.etMetricUnitHeight.text.toString().isEmpty()) {
-            isValid = false
+        when {
+            binding.etMetricUnitWeight.text.toString().isEmpty() -> isValid = false
+            binding.etMetricUnitHeight.text.toString().isEmpty() -> isValid = false
+        }
+
+        // Return result
+        return isValid
+    }
+
+    /**
+     * Validate the input values for US UNITS.
+     */
+    private fun validateUSUnits(): Boolean {
+
+        // Default value
+        var isValid = true
+
+        // Are Weight and Height fields EMPTY?
+        when {
+            binding.etUsUnitHeightFeet.text.toString().isEmpty() -> isValid = false
+            binding.etUsUnitHeightInch.text.toString().isEmpty() -> isValid = false
+            binding.etUsUnitWeight.text.toString().isEmpty() -> isValid = false
         }
 
         // Return result
