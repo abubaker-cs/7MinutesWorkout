@@ -25,7 +25,7 @@ class HistoryActivity : AppCompatActivity() {
             actionbar.setDisplayHomeAsUpEnabled(true)
 
             // Changing the default title
-            actionbar.title = "CALCULATE ME"
+            actionbar.title = "History"
         }
 
         binding.toolbarHistoryActivity.setNavigationOnClickListener {
