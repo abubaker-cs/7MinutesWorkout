@@ -67,6 +67,18 @@ class BMIActivity : AppCompatActivity() {
             }
         }
 
+        // System Unit (Default) = Metric
+        makeVisibleMetricUnitsView()
+
+        // On Change = Check which Unit System should be displayed
+        binding.rgUnits.setOnCheckedChangeListener { group, checkedId ->
+            if (checkedId == R.id.rbMetricUnits) {
+                makeVisibleMetricUnitsView()
+            } else {
+                makeVisibleUSUnitsView()
+            }
+        }
+
     }
 
     /**
@@ -89,37 +101,50 @@ class BMIActivity : AppCompatActivity() {
     }
 
     /**
-     * It will take care of Visibility for the Unit Systems
+     * Set Views: Metric Units
      */
     private fun makeVisibleMetricUnitsView() {
+
+        // Current View is set to Metric Units
         currentVisibleView = METRIC_UNITS_VIEW
 
-        binding.tilMetricUnitWeight.visibility = View.VISIBLE
-        binding.tilMetricUnitHeight.visibility = View.VISIBLE
+        // METRIC UNITS VIEW is Visible
+        binding.llMetricUnitsView.visibility = View.VISIBLE
 
+        // US UNITS VIEW is hidden
+        binding.llUsUnitsView.visibility = View.GONE
+
+        // Text Fields are RESET
         binding.etMetricUnitHeight.text!!.clear()
         binding.etMetricUnitWeight.text!!.clear()
 
-        binding.llUsUnitsHeight.visibility = View.GONE
-        binding.tilUsUnitWeight.visibility = View.GONE
-
+        // Results Summary is Hidden
         binding.llDisplayBMIResult.visibility = View.GONE
+
     }
 
+    /**
+     * Set Views: US Units
+     */
     private fun makeVisibleUSUnitsView() {
+
+        // Current View is set to US Units
         currentVisibleView = US_UNITS_VIEW
 
+        // METRIC UNITS VIEW is Hidden
+        binding.llMetricUnitsView.visibility = View.GONE
+
+        // US UNITS VIEW is VISIBLE
+        binding.llUsUnitsView.visibility = View.VISIBLE
+
+        // Text Fields are RESET
         binding.etUsUnitWeight.text!!.clear()
         binding.etUsUnitHeightFeet.text!!.clear()
         binding.etUsUnitHeightInch.text!!.clear()
 
-        binding.tilMetricUnitWeight.visibility = View.GONE
-        binding.tilMetricUnitHeight.visibility = View.GONE
-
-        binding.llUsUnitsHeight.visibility = View.VISIBLE
-        binding.tilUsUnitWeight.visibility = View.VISIBLE
-
+        // Results Summary is Hidden
         binding.llDisplayBMIResult.visibility = View.GONE
+
     }
 
 
