@@ -75,51 +75,145 @@
             android:orientation="vertical"
             android:padding="10dp">
 
+
             <!--
-                Note: I had to update the AndroidManifest.xml for this file,
-                so following Material Components can be used
+               Note: I had to update the AndroidManifest.xml for this file,
+               so following Material Components can be used
 
-                Changed: android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                With: android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
-             -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilMetricUnitWeight"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+               Changed: android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+               With: android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            -->
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etMetricUnitWeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/lbl_weight"
-                    android:inputType="numberDecimal"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilMetricUnitHeight"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <!-- *****************************
+                Metric Units
+            ******************************* -->
+            <LinearLayout
+                android:id="@+id/llMetricUnitsView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etMetricUnitHeight"
+                <!-- Weight (kg) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilMetricUnitWeight"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etMetricUnitWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/lbl_weight"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Height (cm) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilMetricUnitHeight"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/lbl_height"
-                    android:inputType="numberDecimal"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="10dp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etMetricUnitHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/lbl_height"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <!-- *****************************
+                US Units
+            ******************************* -->
 
             <LinearLayout
-                android:id="@+id/llDiplayBMIResult"
+                android:id="@+id/llUsUnitsView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilUsUnitWeight"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etUsUnitWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="WEIGHT (in lbs)"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/llUsUnitsHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <!--Here the BaselineAligned is When set to false, prevents the layout from aligning its children's
+                     baselines. This attribute is particularly useful when the children
+                     use different values for gravity. The default value is true.-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilUsUnitHeightFeet"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etUsUnitHeightFeet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Feet"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilUsUnitHeightInch"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etUsUnitHeightInch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Inch"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+            <!--END-->
+
+
+            <LinearLayout
+                android:id="@+id/llDisplayBMIResult"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:orientation="vertical"
-                android:visibility="visible"
+                android:visibility="invisible"
                 tools:visibility="visible">
 
                 <TextView
@@ -129,8 +223,7 @@
                     android:gravity="center"
                     android:text="@string/lbl_bmi"
                     android:textAllCaps="true"
-                    android:textSize="16sp"
-                    android:visibility="invisible" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvBMIValue"

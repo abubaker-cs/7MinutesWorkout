@@ -14,6 +14,12 @@ class BMIActivity : AppCompatActivity() {
     // Binding Object
     private lateinit var binding: ActivityBmiBinding
 
+    // Variables for Unit Systems
+    val METRIC_UNITS_VIEW = "METRIC_UNIT_VIEW"
+    val US_UNITS_VIEW = "US_UNIT_VIEW"
+
+    var currentVisibleView: String = METRIC_UNITS_VIEW
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this@BMIActivity, R.layout.activity_bmi)
@@ -83,6 +89,41 @@ class BMIActivity : AppCompatActivity() {
     }
 
     /**
+     * It will take care of Visibility for the Unit Systems
+     */
+    private fun makeVisibleMetricUnitsView() {
+        currentVisibleView = METRIC_UNITS_VIEW
+
+        binding.tilMetricUnitWeight.visibility = View.VISIBLE
+        binding.tilMetricUnitHeight.visibility = View.VISIBLE
+
+        binding.etMetricUnitHeight.text!!.clear()
+        binding.etMetricUnitWeight.text!!.clear()
+
+        binding.llUsUnitsHeight.visibility = View.GONE
+        binding.tilUsUnitWeight.visibility = View.GONE
+
+        binding.llDisplayBMIResult.visibility = View.GONE
+    }
+
+    private fun makeVisibleUSUnitsView() {
+        currentVisibleView = US_UNITS_VIEW
+
+        binding.etUsUnitWeight.text!!.clear()
+        binding.etUsUnitHeightFeet.text!!.clear()
+        binding.etUsUnitHeightInch.text!!.clear()
+
+        binding.tilMetricUnitWeight.visibility = View.GONE
+        binding.tilMetricUnitHeight.visibility = View.GONE
+
+        binding.llUsUnitsHeight.visibility = View.VISIBLE
+        binding.tilUsUnitWeight.visibility = View.VISIBLE
+
+        binding.llDisplayBMIResult.visibility = View.GONE
+    }
+
+
+    /**
      * Display the result of METRIC UNITS.
      */
     private fun displayBMIResult(bmi: Float) {
@@ -150,10 +191,11 @@ class BMIActivity : AppCompatActivity() {
         }
 
         // Toggle hidden state to Visible for following components:
-        binding.tvYourBMI.visibility = View.VISIBLE
-        binding.tvBMIValue.visibility = View.VISIBLE
-        binding.tvBMIType.visibility = View.VISIBLE
-        binding.tvBMIDescription.visibility = View.VISIBLE
+        binding.llDisplayBMIResult.visibility = View.VISIBLE
+        // binding.tvYourBMI.visibility = View.VISIBLE
+        // binding.tvBMIValue.visibility = View.VISIBLE
+        // binding.tvBMIType.visibility = View.VISIBLE
+        // binding.tvBMIDescription.visibility = View.VISIBLE
 
         // BMI Value: Round the result to 2 decimal values after "."
         val bmiValue = BigDecimal(bmi.toDouble()).setScale(2, RoundingMode.HALF_EVEN).toString()
