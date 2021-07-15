@@ -28,12 +28,12 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     // Variable for timer progress. As initial value the rest progress is set to 0. As we are about to start.
     private var restProgress = 0
-    private var restTimerDuration: Long = 1 // 10 - Being used in setRestProgressBar()
+    private var restTimerDuration: Long = 10 // 10 - Being used in setRestProgressBar()
 
     // For Exercise (Challenge)
     private var exerciseTimer: CountDownTimer? = null
     private var exerciseProgress = 0
-    private var exerciseTimerDuration: Long = 1 // 30
+    private var exerciseTimerDuration: Long = 30 // 30
 
     //
     private var exerciseList: ArrayList<ExerciseModel>? = null
