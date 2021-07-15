@@ -55,9 +55,11 @@ class HistoryAdapter(private val allCompletedDatesList: ArrayList<String>) :
 
         val date: String = allCompletedDatesList[position]
 
+        // We do not want to start from default 0 index number
         holder.tvPosition.text = (position + 1).toString()
         holder.tvItem.text = date
-        // Updating the background color according to the odd/even positions in list.
+
+        // Styling: Updating the background color according to the odd/even positions in list.
         if (position % 2 == 0) {
             holder.llHistoryMainItem.setBackgroundColor(Color.parseColor("#EBEBEB"))
         } else {
