@@ -1,9 +1,8 @@
 package org.abubaker.a7minutesworkout
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import org.abubaker.a7minutesworkout.databinding.ActivityMainBinding
 

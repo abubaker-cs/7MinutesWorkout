@@ -3,25 +3,20 @@ package org.abubaker.a7minutesworkout
 import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.abubaker.a7minutesworkout.data.ExerciseModel
 import org.abubaker.a7minutesworkout.data.ExerciseStatusAdapter
 import org.abubaker.a7minutesworkout.data.Exercises
 import org.abubaker.a7minutesworkout.databinding.ActivityExerciseBinding
-import org.abubaker.a7minutesworkout.databinding.ActivityFinishBinding
 import org.abubaker.a7minutesworkout.databinding.DialogCustomBackConfirmationBinding
-import java.lang.Exception
 import java.util.*
-import kotlin.collections.ArrayList
 
 class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
