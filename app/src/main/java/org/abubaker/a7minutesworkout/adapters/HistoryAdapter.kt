@@ -1,17 +1,12 @@
 package org.abubaker.a7minutesworkout.adapters
 
-import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.abubaker.a7minutesworkout.R
-import org.abubaker.a7minutesworkout.databinding.ActivityBmiBinding
-import org.abubaker.a7minutesworkout.databinding.ActivityHistoryBinding
 import org.abubaker.a7minutesworkout.databinding.ItemHistoryRowBinding
 
-class HistoryAdapter(val allCompletedDatesList: ArrayList<String>) :
+class HistoryAdapter(private val allCompletedDatesList: ArrayList<String>) :
     RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     /**
