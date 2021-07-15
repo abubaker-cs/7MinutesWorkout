@@ -64,6 +64,42 @@ class SqliteOpenHelper(
 
     }
 
+    /**
+     * Function returns the list of history table data.
+     */
+    fun getAllCompletedDatesList(): ArrayList<String> {
+
+        // ArrayList is initialized
+        val list = ArrayList<String>()
+
+        // Open Database Connection for Read-only tasks
+        val db = this.readableDatabase
+
+        // Query for selecting all the data from history table.
+        // Runs the provided SQL and returns a Cursor over the result set.
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_HISTORY", null)
+
+        // Move the cursor to the next row.
+        while (cursor.moveToNext()) {
+
+            // Retrieves Data
+            val dateValue = cursor.getString(cursor.getColumnIndex(COLUMN_COMPLETED_DATE))
+
+            // Stores Data
+            list.add(dateValue)
+
+            // Note: It returns:
+            //  0 based index for the given column name, or
+            // -1 if the column doesn't exist.
+        }
+
+        // Cursor is closed after its used.
+        cursor.close()
+
+        // List is returned.
+        return list
+    }
+
     // Static Variables
     companion object {
 
