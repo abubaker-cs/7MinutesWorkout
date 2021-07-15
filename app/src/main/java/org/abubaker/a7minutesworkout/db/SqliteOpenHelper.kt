@@ -1,4 +1,4 @@
-package org.abubaker.a7minutesworkout
+package org.abubaker.a7minutesworkout.db
 
 import android.content.ContentValues
 import android.content.Context
@@ -46,16 +46,22 @@ class SqliteOpenHelper(
      * Function is used to insert the date in Database History table.
      */
     fun addDate(date: String) {
-        val values =
-            ContentValues() // Creates an empty set of values using the default initial size
-        values.put(
-            COLUMN_COMPLETED_DATE,
-            date
-        ) // Putting the value to the column along with the value.
-        val db =
-            this.writableDatabase // Create and/or open a database that will be used for reading and writing.
-        db.insert(TABLE_HISTORY, null, values) // Insert query is return
-        db.close() // Database is closed after insertion.
+
+        // Creates an empty set of values using the default initial size
+        val values = ContentValues()
+
+        // Inert "today's Date" into the Date Column
+        values.put(COLUMN_COMPLETED_DATE, date)
+
+        // Open Database Connection for R/W tasks
+        val db = this.writableDatabase
+
+        // Insert query is return
+        db.insert(TABLE_HISTORY, null, values)
+
+        // Close Database Connection
+        db.close()
+
     }
 
     // Static Variables
